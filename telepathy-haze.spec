@@ -1,6 +1,6 @@
 Name:		telepathy-haze
 Version:	0.7.0
-Release:	5%{?dist}
+Release:	7%{?dist}
 Summary:	A multi-protocol Libpurple connection manager for Telepathy
 
 Group:		Applications/Communications
@@ -66,6 +66,12 @@ make check
 
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.7.0-7
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.7.0-6
+- Mass rebuild 2013-12-27
+
 * Thu Sep 26 2013 Debarshi Ray <rishi@fedoraproject.org> - 0.7.0-5
 - Add %%check to run the upstream test suite on each build (Red Hat #1000707)
 
