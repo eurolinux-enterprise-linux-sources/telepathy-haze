@@ -1,11 +1,11 @@
-diff -urNp telepathy-haze-0.7.0.orig/tests/twisted/simple-caps.py telepathy-haze-0.7.0/tests/twisted/simple-caps.py
---- telepathy-haze-0.7.0.orig/tests/twisted/simple-caps.py	2013-10-24 11:55:10.362545682 +0200
-+++ telepathy-haze-0.7.0/tests/twisted/simple-caps.py	2013-10-24 12:55:28.764972034 +0200
-@@ -97,6 +97,7 @@ def test_media(q, bus, conn, stream):
+diff -urNp telepathy-haze-0.8.0.orig/tests/twisted/simple-caps.py telepathy-haze-0.8.0/tests/twisted/simple-caps.py
+--- telepathy-haze-0.8.0.orig/tests/twisted/simple-caps.py	2015-05-06 11:36:11.515448089 +0200
++++ telepathy-haze-0.8.0/tests/twisted/simple-caps.py	2015-05-06 11:36:52.932610984 +0200
+@@ -89,6 +89,7 @@ def test_media(q, bus, conn, stream):
      q.expect('stream-presence') # can't be bothered checking this
  
  if __name__ == '__main__':
 +    raise SystemExit(77)
      exec_test(test_self_handle)
-     exec_test(test_someone_else)
+     exec_test(test_someone_else, do_connect=False, protocol=JabberXmlStream)
  

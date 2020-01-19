@@ -1,6 +1,6 @@
 Name:		telepathy-haze
-Version:	0.7.0
-Release:	7%{?dist}
+Version:	0.8.0
+Release:	1%{?dist}
 Summary:	A multi-protocol Libpurple connection manager for Telepathy
 
 Group:		Applications/Communications
@@ -8,15 +8,14 @@ License:	GPLv2+
 URL:		http://developer.pidgin.im/wiki/Telepathy
 
 Source0:	http://telepathy.freedesktop.org/releases/%{name}/%{name}-%{version}.tar.gz
-Patch0:         001-handle_purple_account_request_password.patch
-Patch1:         002-fix_resource_leakage.patch
-Patch2:         003-fix_more_resource_leaks.patch
+Patch0:         0001-contact-list-Don-t-crash-if-a-contact-is-already-in-.patch
 
 # Gets stuck on some architectures with:
 # ... CannotListenError: Couldn't listen on any:4242: [Errno 98] Address
 # already in use.
-Patch3:         telepathy-haze-tests-disable-simple-caps.patch
-Patch4:         telepathy-haze-tests-disable-initial-roster.patch
+Patch100:       telepathy-haze-tests-disable-simple-caps.patch
+Patch101:       telepathy-haze-tests-disable-initial-roster.patch
+Patch102:       telepathy-haze-tests-disable-fail.patch
 
 BuildRequires:	dbus-python
 BuildRequires:	libpurple-devel >= 2.7
@@ -24,8 +23,8 @@ BuildRequires:	pygobject2
 BuildRequires:	python-twisted-words
 BuildRequires:	telepathy-glib-devel >= 0.15.1
 BuildRequires:  libxslt
-  
-Requires:	telepathy-filesystem    
+
+Requires:	telepathy-filesystem
 
 %description
 telepathy-haze is a connection manager built around libpurple, the core of
@@ -37,11 +36,10 @@ others will probably work too.
 
 %prep
 %setup -q
-%patch0 -p1 -b .password
-%patch1 -p1 -b .leak1
-%patch2 -p1 -b .leak2
-%patch3 -p1 -b .disable-simple-caps
-%patch4 -p1 -b .disable-initial-roster
+%patch0 -p1 -b .contacts
+%patch100 -p1 -b .disable-simple-caps
+%patch101 -p1 -b .disable-initial-roster
+%patch102 -p1 -b .disable-fail
 
 %build
 %configure
@@ -66,6 +64,14 @@ make check
 
 
 %changelog
+* Wed May 06 2015 Debarshi Ray <rishi@fedoraproject.org> - 0.8.0-1
+- Update to 0.8.0
+Resolves: #1217529
+
+* Thu Apr 30 2015 Debarshi Ray <rishi@fedoraproject.org> - 0.7.0-8
+- Don't crash if a contact is already in the roster
+Resolves: #1123835
+
 * Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.7.0-7
 - Mass rebuild 2014-01-24
 

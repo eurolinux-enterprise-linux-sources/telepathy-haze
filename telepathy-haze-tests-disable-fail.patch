@@ -1,0 +1,10 @@
+diff -urNp telepathy-haze-0.8.0.orig/tests/twisted/connect/fail.py telepathy-haze-0.8.0/tests/twisted/connect/fail.py
+--- telepathy-haze-0.8.0.orig/tests/twisted/connect/fail.py	2015-05-12 18:20:30.312930819 +0200
++++ telepathy-haze-0.8.0/tests/twisted/connect/fail.py	2015-05-12 18:22:01.169404590 +0200
+@@ -24,5 +24,6 @@ def test(q, bus, conn, stream):
+         args=[cs.CONN_STATUS_DISCONNECTED, cs.CSR_NETWORK_ERROR])
+ 
+ if __name__ == '__main__':
++    raise SystemExit(77)
+     exec_test(test, {'port': dbus.UInt32(14243)}, do_connect=False)
+ 
